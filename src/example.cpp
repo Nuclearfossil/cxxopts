@@ -27,7 +27,7 @@ THE SOFTWARE.
 #include "cxxopts.hpp"
 
 void
-parse(int argc, char* argv[])
+parse(int argc, const char* argv[])
 {
   try
   {
@@ -49,6 +49,7 @@ parse(int argc, char* argv[])
       ("i,input", "Input", cxxopts::value<std::string>())
       ("o,output", "Output file", cxxopts::value<std::string>()
           ->default_value("a.out")->implicit_value("b.def"), "BIN")
+      ("x", "A short-only option", cxxopts::value<std::string>())
       ("positional",
         "Positional arguments: these are the arguments that are entered "
         "without an option", cxxopts::value<std::vector<std::string>>())
@@ -159,7 +160,7 @@ parse(int argc, char* argv[])
   }
 }
 
-int main(int argc, char* argv[])
+int main(int argc, const char* argv[])
 {
   parse(argc, argv);
 
